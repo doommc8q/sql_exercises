@@ -1,4 +1,4 @@
-SELECT Sum(I.Total) TotalSumIn2010, e.FirstName || ' ' || e.LastName AS SalesAgent
+SELECT Sum(I.Total) MaxTotalSumIn2010, e.FirstName || ' ' || e.LastName AS SalesAgent
 FROM Invoice I
          INNER JOIN Customer c ON i.CustomerId = c.CustomerId
          INNER JOIN Employee E on c.SupportRepId = E.EmployeeId

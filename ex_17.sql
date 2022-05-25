@@ -1,7 +1,5 @@
-SELECT SUM(I.Total), e.FirstName || ' ' || e.LastName AS SalesAgent
+SELECT sum(I.Total) AS TotalSum, e.FirstName || ' ' || e.LastName AS FullName
 FROM Invoice I
-         INNER JOIN Customer c ON i.CustomerId = c.CustomerId
-         INNER JOIN Employee E on c.SupportRepId = E.EmployeeId
-WHERE Title like '%sales%'
-   or '%agent%'
-GROUP BY e.FirstName;
+JOIN Customer c ON I.CustomerId = c.CustomerId
+JOIN Employee e ON c.SupportRepId = e.EmployeeId
+GROUP BY c.SupportRepId;

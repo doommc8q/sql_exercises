@@ -1,6 +1,6 @@
 SELECT i.InvoiceId,
-       c.FirstName || ' ' || c.LastName AS FullName
-FROM Employee e
-         INNER JOIN Customer c ON e.EmployeeId = c.SupportRepId
-         INNER JOIN Invoice i on c.CustomerId = i.CustomerId
-WHERE e.Title = 'Sales Support Agent';
+       e.FirstName || ' ' || e.LastName AS FullName
+FROM Invoice i
+         INNER JOIN Customer c ON c.CustomerId = i.CustomerId
+         INNER JOIN Employee e on c.CustomerId = e.EmployeeId
+WHERE e.Title LIKE '%sales%'AND e.Title LIKE '%agent%';
